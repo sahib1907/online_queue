@@ -16,9 +16,9 @@ class Admin
      */
     public function handle($request, Closure $next)
     {
-        if (Auth::check()) {
+        if (Auth::check() && Auth::user()->deleted_value()==0) {
             return $next($request);
         }
-        return redirect('/admin/login');
+        return redirect('/logout');
     }
 }

@@ -6,6 +6,9 @@ use App\Client;
 use App\Queues;
 use App\Reservations;
 use App\Services;
+use App\Settings;
+use App\Socials;
+use App\User;
 use Illuminate\Http\Request;
 
 class AdminGetController extends AdminController
@@ -17,20 +20,47 @@ class AdminGetController extends AdminController
 
     //admins
     public function get_admins() {
-        $services = Services::where(['deleted'=>0])->select()->get();
-        return view('backend.services')->with(['services'=>$services]);
+        $admins = User::where(['deleted'=>0])->select()->get();
+        return view('backend.admins')->with(['admins'=>$admins]);
     }
 
     public function get_add_admin() {
-        return view('backend.service_add');
+        return view('backend.admin_add');
     }
 
     public function get_update_admin($id) {
-        $service = Services::where(['id'=>$id, 'deleted'=>0])->select()->first();
-        if (count($service) == 0) {
+        $admin = User::where(['id'=>$id, 'deleted'=>0])->select()->first();
+        if (count($admin) == 0) {
             return redirect('/admin');
         }
-        return view('backend.service_update')->with('service', $service);
+        return view('backend.admin_update')->with('admin', $admin);
+    }
+
+    //settings
+    public function get_settings() {
+        $settings = Settings::where(['id'=>1, 'deleted'=>0])->select()->first();
+        if (count($settings) == 0) {
+            return redirect('/admin');
+        }
+        return view('backend.settings')->with('settings', $settings);
+    }
+
+    //socials
+    public function get_socials() {
+        $socials = Socials::where(['deleted'=>0])->select()->get();
+        return view('backend.socials')->with(['socials'=>$socials]);
+    }
+
+    public function get_add_social() {
+        return view('backend.social_add');
+    }
+
+    public function get_update_social($id) {
+        $social = Socials::where(['id'=>$id, 'deleted'=>0])->select()->first();
+        if (count($social) == 0) {
+            return redirect('/admin');
+        }
+        return view('backend.social_update')->with('social', $social);
     }
 
     //clients

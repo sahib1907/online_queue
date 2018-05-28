@@ -41,8 +41,7 @@
                     </div>
                     <div class="profile_info">
                         <span>Xoş gəlmisiniz,</span>
-                        <h2 style="text-transform: capitalize;">Burada deyisecek</h2>
-                        {{--<h2 style="text-transform: capitalize;">{{$admin->name}} {{$admin->surname}}</h2>--}}
+                        <h2 style="text-transform: capitalize;">{{Auth::user()->name}} {{Auth::user()->surname}}</h2>
                     </div>
                     <div class="clearfix"></div>
                 </div>
@@ -57,12 +56,8 @@
                         <ul class="nav side-menu">
                             <li><a href="/admin/"><i class="fa fa-home"></i> Ana səhifə</a></li>
                             <li><a href="/admin/admins"><i class="fa fa-user-secret"></i> Adminlər</a></li>
-                            {{--<li><a><i class="fa fa-wrench"></i> Services <span class="fa fa-chevron-down"></span></a>--}}
-                                {{--<ul class="nav child_menu">--}}
-                                    {{--<li><a href="/admin/services">Services</a></li>--}}
-                                    {{--<li><a href="/admin/services-types">Services types</a></li>--}}
-                                {{--</ul>--}}
-                            {{--</li>--}}
+                            <li><a href="/admin/settings"><i class="fa fa-wrench"></i> Ayarlar</a></li>
+                            <li><a href="/admin/socials"><i class="fa fa-share-square"></i> Sosial şəbəkələr</a></li>
                             <li><a href="/admin/clients"><i class="fa fa-users"></i> İstifadəçilər</a></li>
                             <li><a href="/admin/services"><i class="fa fa-building"></i> Xidmət məzrkəzləri</a></li>
                             <li><a href="/admin/queues"><i class="fa fa-align-justify"></i> Növbələr</a></li>
@@ -86,12 +81,12 @@
                     <ul class="nav navbar-nav navbar-right">
                         <li class="">
                             <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                <span style="text-transform: capitalize;">Bura deyisecek</span>
-                                {{--<span style="text-transform: capitalize;">{{$admin->name}} {{$admin->surname}}</span>--}}
+                                <span style="text-transform: capitalize;">{{Auth::user()->name}} {{Auth::user()->surname}}</span>
                                 <span class=" fa fa-angle-down"></span>
                             </a>
                             <ul class="dropdown-menu dropdown-usermenu pull-right">
-                                <li><a href="/admin/logout"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+                                <li><a href="admins/update/{{Auth::user()->id}}"><i class="fa fa-edit pull-right"></i> Düzəliş et</a></li>
+                                <li><a href="/logout"><i class="fa fa-sign-out pull-right"></i> Çıxış</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -105,7 +100,7 @@
     <!-- footer content -->
         <footer>
             <div class="pull-right">
-                by <strong>Web's dragons</strong>
+                by <strong><a href="https://www.facebook.com/sahib.fermanli">Sahib Fərmanlı</a></strong>
             </div>
             <div class="clearfix"></div>
         </footer>

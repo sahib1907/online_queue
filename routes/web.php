@@ -27,11 +27,15 @@ Route::group(['prefix'=>'admin', 'middleware'=>'Admin'], function () {
     Route::get('/', 'AdminGetController@get_index');
     Route::get('/index', 'AdminGetController@get_index');
     Route::get('/home', 'AdminGetController@get_index');
-    Route::get('/logout', 'Auth\LoginController@logout');
 
     Route::group(['prefix'=>'clients'], function () {
         Route::get('/', 'AdminGetController@get_clients');
         Route::post('/', 'AdminPostController@post_delete_client');
+    });
+
+    Route::group(['prefix'=>'settings'], function () {
+        Route::get('/', 'AdminGetController@get_settings');
+        Route::post('/', 'AdminPostController@post_settings');
     });
 
     Route::group(['prefix'=>'services'], function () {
@@ -41,6 +45,15 @@ Route::group(['prefix'=>'admin', 'middleware'=>'Admin'], function () {
         Route::post('/add', 'AdminPostController@post_add_service');
         Route::get('/update/{id}', 'AdminGetController@get_update_service');
         Route::post('/update/{id}', 'AdminPostController@post_update_service');
+    });
+
+    Route::group(['prefix'=>'socials'], function () {
+        Route::get('/', 'AdminGetController@get_socials');
+        Route::post('/', 'AdminPostController@post_delete_social');
+        Route::get('/add', 'AdminGetController@get_add_social');
+        Route::post('/add', 'AdminPostController@post_add_social');
+        Route::get('/update/{id}', 'AdminGetController@get_update_social');
+        Route::post('/update/{id}', 'AdminPostController@post_update_social');
     });
 
     Route::group(['prefix'=>'admins'], function () {
@@ -64,3 +77,4 @@ Route::group(['prefix'=>'admin', 'middleware'=>'Admin'], function () {
 });
 
 Auth::routes();
+Route::get('/logout', 'Auth\LoginController@logout');

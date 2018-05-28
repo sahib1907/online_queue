@@ -4,9 +4,8 @@
         <div class="">
             <div class="page-title">
                 <div class="title_left" style="width: 100%; !important;">
-                    <h3 style="display: inline-block;"> Adminlər</h3>
-                    {{--adminlerde qalmisam--}}
-                    <a href="/admin/admins/add" class="btn btn-primary" style="float: right;">Əlavə et</a>
+                    <h3 style="display: inline-block;"> Sosial şəbələlər</h3>
+                    <a href="/admin/socials/add" class="btn btn-primary" style="float: right;">Əlavə et</a>
                 </div>
             </div>
 
@@ -21,9 +20,9 @@
                                     <thead>
                                     <tr class="headings">
                                         <th class="column-title">#</th>
+                                        <th class="column-title">İkon </th>
                                         <th class="column-title">Ad </th>
-                                        <th class="column-title">Soy ad </th>
-                                        <th class="column-title">E-mail </th>
+                                        <th class="column-title">Link </th>
                                         <th class="column-title">Qeydiyyat tarixi </th>
                                         <th class="column-title">Dəyişiklik tarixi </th>
                                         <th class="column-title">Silmək </th>
@@ -35,21 +34,21 @@
                                     @php
                                         $row = 1;
                                     @endphp
-                                    @foreach($admins as $admin)
+                                    @foreach($socials as $social)
                                         <tr class="even pointer" id="row_{{$row}}">
-                                            <td>{{$admin->id}}</td>
-                                            <td>{{$admin->name}}</td>
-                                            <td>{{$admin->surname}}</td>
-                                            <td>{{$admin->email}}</td>
-                                            <td>{{$admin->created_at}}</td>
-                                            <td>{{$admin->updated_at}}</td>
+                                            <td>{{$social->id}}</td>
+                                            <td><i class="fa {{$social->icon}} fa-2x"></i></td>
+                                            <td>{{$social->name}}</td>
+                                            <td><a href="{{$social->link}}">{{$social->link}}</a></td>
+                                            <td>{{$social->created_at}}</td>
+                                            <td>{{$social->updated_at}}</td>
                                             <td>
                                                 <input class="btn btn-danger" type="button"
-                                                       onclick="del(this, '{{$admin->id}}', '{{$row}}');"
+                                                       onclick="del(this, '{{$social->id}}', '{{$row}}');"
                                                        value="Sil">
                                             </td>
                                             <td>
-                                                <a href="admins/update/{{$admin->id}}" class="btn btn-warning">Update</a>
+                                                <a href="socials/update/{{$social->id}}" class="btn btn-warning">Update</a>
                                             </td>
                                         </tr>
                                         @php
