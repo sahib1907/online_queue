@@ -60,48 +60,26 @@
     <header id="header">
         <div class="container">
             <div class="logo">
-                <a href="index.html">
-                    <img alt="Porto" width="111" height="54" data-sticky-width="82" data-sticky-height="40" src="/frontend/img/logo.png">
+                <a href="/">
+                    <img alt="Porto" width="111" height="80" data-sticky-width="82" data-sticky-height="40" src="/img/icon.png">
                 </a>
-            </div>
-            <div class="search">
-                <form id="searchForm" action="page-search-results.html" method="get">
-                    <div class="input-group">
-                        <input type="text" class="form-control search" name="q" id="q" placeholder="Search..." required>
-                        <span class="input-group-btn">
-									<button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
-								</span>
-                    </div>
-                </form>
             </div>
             <nav>
                 <ul class="nav nav-pills nav-top">
-                    <li>
-                        <a href="about-us.html"><i class="fa fa-angle-right"></i>About Us</a>
-                    </li>
-                    <li>
-                        <a href="contact-us.html"><i class="fa fa-angle-right"></i>Contact Us</a>
+                    <li class="phone">
+                        <span><i class="fa fa-phone"></i><a href="tel:{{$settings->phone}}">{{$settings->phone}}</a></span>
                     </li>
                     <li class="phone">
-                        <span><i class="fa fa-phone"></i>(123) 456-7890</span>
+                        <span><i class="fa fa-at"></i><a href="mailto:{{$settings->email}}">{{$settings->email}}</a></span>
                     </li>
                 </ul>
             </nav>
-            <button class="btn btn-responsive-nav btn-inverse" data-toggle="collapse" data-target=".nav-main-collapse">
-                <i class="fa fa-bars"></i>
-            </button>
         </div>
         <div class="navbar-collapse nav-main-collapse collapse">
             <div class="container">
-                <ul class="social-icons">
-                    <li class="facebook"><a href="http://www.facebook.com/" target="_blank" title="Facebook">Facebook</a></li>
-                    <li class="twitter"><a href="http://www.twitter.com/" target="_blank" title="Twitter">Twitter</a></li>
-                    <li class="linkedin"><a href="http://www.linkedin.com/" target="_blank" title="Linkedin">Linkedin</a></li>
-                </ul>
                 <nav class="nav-main mega-menu">
                     <ul class="nav nav-pills nav-main" id="mainMenu">
-                        <li><a href="/">Home page</a></li>
-                        <li><a href="/online-queue">Queue</a></li>
+                        <li><a href="/">Ana səhifə</a></li>
                     </ul>
                 </nav>
             </div>
@@ -113,40 +91,13 @@
     <footer id="footer">
         <div class="container">
             <div class="row">
-                <div class="col-md-3">
-                    <div class="newsletter">
-                        <h4>Newsletter</h4>
-                        <p>Keep up on our always evolving product features and technology. Enter your e-mail and subscribe to our newsletter.</p>
-
-                        <div class="alert alert-success hidden" id="newsletterSuccess">
-                            <strong>Success!</strong> You've been added to our email list.
-                        </div>
-
-                        <div class="alert alert-danger hidden" id="newsletterError"></div>
-
-                        <form id="newsletterForm" action="php/newsletter-subscribe.php" method="POST">
-                            <div class="input-group">
-                                <input class="form-control" placeholder="Email Address" name="newsletterEmail" id="newsletterEmail" type="text">
-                                <span class="input-group-btn">
-											<button class="btn btn-default" type="submit">Go!</button>
-										</span>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <h4>Latest Tweets</h4>
-                    <div id="tweet" class="twitter" data-plugin-tweets data-plugin-options='{"username": "", "count": 2}'>
-                        <p>Please wait...</p>
-                    </div>
-                </div>
                 <div class="col-md-4">
                     <div class="contact-details">
-                        <h4>Contact Us</h4>
+                        <h4>Bizimlə əlaqə</h4>
                         <ul class="contact">
-                            <li><p><i class="fa fa-map-marker"></i> <strong>Address:</strong> 1234 Street Name, City Name, United States</p></li>
-                            <li><p><i class="fa fa-phone"></i> <strong>Phone:</strong> (123) 456-7890</p></li>
-                            <li><p><i class="fa fa-envelope"></i> <strong>Email:</strong> <a href="mailto:mail@example.com">mail@example.com</a></p></li>
+                            <li><p><i class="fa fa-map-marker"></i> <strong>Ünvan:</strong> {{$settings->address}}</p></li>
+                            <li><p><i class="fa fa-phone"></i> <strong>Telefon: </strong><a href="tel:{{$settings->phone}}"></a>{{$settings->phone}}</p></li>
+                            <li><p><i class="fa fa-envelope"></i> <strong>E-mail: </strong> <a href="mailto:{{$settings->email}}">{{$settings->email}}</a></p></li>
                         </ul>
                     </div>
                 </div>
@@ -154,9 +105,9 @@
                     <h4>Follow Us</h4>
                     <div class="social-icons">
                         <ul class="social-icons">
-                            <li class="facebook"><a href="http://www.facebook.com/" target="_blank" data-placement="bottom" data-tooltip title="Facebook">Facebook</a></li>
-                            <li class="twitter"><a href="http://www.twitter.com/" target="_blank" data-placement="bottom" data-tooltip title="Twitter">Twitter</a></li>
-                            <li class="linkedin"><a href="http://www.linkedin.com/" target="_blank" data-placement="bottom" data-tooltip title="Linkedin">Linkedin</a></li>
+                            @foreach($socials as $social)
+                                <li style="margin-right: 10px;"><a href="{{$social->link}}" target="_blank" title="{{$social->name}}"><i class="fa {{$social->icon}} fa-3x"></i></a></li>
+                            @endforeach
                         </ul>
                     </div>
                 </div>
@@ -165,22 +116,8 @@
         <div class="footer-copyright">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-1">
-                        <a href="index.html" class="logo">
-                            <img alt="Porto Website Template" class="img-responsive" src="/frontend/img/logo-footer.png">
-                        </a>
-                    </div>
                     <div class="col-md-7">
-                        <p>© Copyright 2015. All Rights Reserved.</p>
-                    </div>
-                    <div class="col-md-4">
-                        <nav id="sub-menu">
-                            <ul>
-                                <li><a href="page-faq.html">FAQ's</a></li>
-                                <li><a href="sitemap.html">Sitemap</a></li>
-                                <li><a href="contact-us.html">Contact</a></li>
-                            </ul>
-                        </nav>
+                        <p>© Copyright 2018. All Rights Reserved. | by <a href="https://www.facebook.com/sahib.fermanli">Sahib Farmanli</a></p>
                     </div>
                 </div>
             </div>
