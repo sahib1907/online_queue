@@ -29,7 +29,7 @@
         <div class="col-md-3 left_col">
             <div class="left_col scroll-view">
                 <div class="navbar nav_title" style="border: 0;">
-                    <a href="/admin/" class="site_title"><i class="fa fa-paw"></i> <span>Onlayn növə</span></a>
+                    <a href="/admin/" class="site_title"><i class="fa fa-paw"></i> <span>Onlayn növbə</span></a>
                 </div>
 
                 <div class="clearfix"></div>
@@ -85,7 +85,7 @@
                                 <span class=" fa fa-angle-down"></span>
                             </a>
                             <ul class="dropdown-menu dropdown-usermenu pull-right">
-                                <li><a href="admins/update/{{Auth::user()->id}}"><i class="fa fa-edit pull-right"></i> Düzəliş et</a></li>
+                                <li><a href="/admin/admins/update/{{Auth::user()->id}}"><i class="fa fa-edit pull-right"></i> Düzəliş et</a></li>
                                 <li><a href="/logout"><i class="fa fa-sign-out pull-right"></i> Çıxış</a></li>
                             </ul>
                         </li>
