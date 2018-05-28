@@ -80,6 +80,15 @@ class HomePostController extends HomeController
 
             $add_queue = Queues::create($request->all());
             if ($add_queue) {
+                $client_detail = Client::where('id', $request->client_id)->select('mail', 'name', 'surname')->first();
+                $email = $client_detail['mail'];
+                $to = $client_detail['name']." ".$client_detail['surname'];
+                $message = "Hörmətli, ".$client_detail['name']." ".$client_detail['surname']."! Sizin növbəniz onlinequeue.az saytı tərəfindən uğurla alınmışdır.";
+                $message .= "\n Sizin növbəniz: ".$queue."!";
+                $message .= "\n Hazırda xidmət görən növbə: ".$current_queue."!";
+                $title = 'Növbənin alınması';
+                app('App\Http\Controllers\MailController')->get_send($email, $to, $title, $message);
+
                 return response(['case' => 'success', 'title' => 'Uğurlu!', 'content' => 'Əməliyyat uğurla sona çatdı...', 'barcode'=>$barcode, 'current_queue'=>$current_queue, 'last_queue'=>$queue]);
             }
             else {
@@ -147,6 +156,14 @@ class HomePostController extends HomeController
 
             $add_reservation = Reservations::create($request->all());
             if ($add_reservation) {
+                $client_detail = Client::where('id', $request->client_id)->select('mail', 'name', 'surname')->first();
+                $email = $client_detail['mail'];
+                $to = $client_detail['name']." ".$client_detail['surname'];
+                $message = "Hörmətli, ".$client_detail['name']." ".$client_detail['surname']."! Sizin rezerviniz onlinequeue.az saytı tərəfindən uğurla alınmışdır.";
+                $message .= "\n Sizin xidmət vaxtınız: ".$request->date." ".$request->time."!";
+                $title = 'Rezervin alınması';
+                app('App\Http\Controllers\MailController')->get_send($email, $to, $title, $message);
+
                 return response(['case' => 'success', 'title' => 'Uğurlu!', 'content' => 'Əməliyyat uğurla sona çatdı...', 'barcode'=>$barcode]);
             }
             else {
