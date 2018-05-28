@@ -23,10 +23,11 @@ Route::post('/online-queue/{service_id}/{serial_number}', 'HomePostController@po
 //Route::post('/queue/get-queue', 'HomeAjaxController@ajax_get_queue');
 
 //admin panel
-Route::group(['prefix'=>'admin'], function () {
+Route::group(['prefix'=>'admin', 'middleware'=>'Admin'], function () {
     Route::get('/', 'AdminGetController@get_index');
     Route::get('/index', 'AdminGetController@get_index');
     Route::get('/home', 'AdminGetController@get_index');
+    Route::get('/logout', 'Auth\LoginController@logout');
 
     Route::group(['prefix'=>'clients'], function () {
         Route::get('/', 'AdminGetController@get_clients');
@@ -60,6 +61,6 @@ Route::group(['prefix'=>'admin'], function () {
         Route::get('/', 'AdminGetController@get_reservations');
         Route::post('/', 'AdminPostController@post_delete_reservation');
     });
-
-    Route::get('/logout', 'AdminGetController@get_logout');
 });
+
+Auth::routes();
