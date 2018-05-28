@@ -38,8 +38,27 @@ Route::group(['prefix'=>'admin'], function () {
         Route::post('/', 'AdminPostController@post_delete_service');
         Route::get('/add', 'AdminGetController@get_add_service');
         Route::post('/add', 'AdminPostController@post_add_service');
-        Route::get('/update', 'AdminGetController@get_update_service');
-        Route::post('/update', 'AdminPostController@post_update_service');
+        Route::get('/update/{id}', 'AdminGetController@get_update_service');
+        Route::post('/update/{id}', 'AdminPostController@post_update_service');
+    });
+
+    Route::group(['prefix'=>'admins'], function () {
+        Route::get('/', 'AdminGetController@get_admins');
+        Route::post('/', 'AdminPostController@post_delete_admin');
+        Route::get('/add', 'AdminGetController@get_add_admin');
+        Route::post('/add', 'AdminPostController@post_add_admin');
+        Route::get('/update/{id}', 'AdminGetController@get_update_admin');
+        Route::post('/update/{id}', 'AdminPostController@post_update_admin');
+    });
+
+    Route::group(['prefix'=>'queues'], function () {
+        Route::get('/', 'AdminGetController@get_queues');
+        Route::post('/', 'AdminPostController@post_delete_queue');
+    });
+
+    Route::group(['prefix'=>'reservations'], function () {
+        Route::get('/', 'AdminGetController@get_reservations');
+        Route::post('/', 'AdminPostController@post_delete_reservation');
     });
 
     Route::get('/logout', 'AdminGetController@get_logout');

@@ -56,6 +56,7 @@
                         <h3>General</h3>
                         <ul class="nav side-menu">
                             <li><a href="/admin/"><i class="fa fa-home"></i> Ana səhifə</a></li>
+                            <li><a href="/admin/admins"><i class="fa fa-user-secret"></i> Adminlər</a></li>
                             {{--<li><a><i class="fa fa-wrench"></i> Services <span class="fa fa-chevron-down"></span></a>--}}
                                 {{--<ul class="nav child_menu">--}}
                                     {{--<li><a href="/admin/services">Services</a></li>--}}
@@ -64,6 +65,8 @@
                             {{--</li>--}}
                             <li><a href="/admin/clients"><i class="fa fa-users"></i> İstifadəçilər</a></li>
                             <li><a href="/admin/services"><i class="fa fa-building"></i> Xidmət məzrkəzləri</a></li>
+                            <li><a href="/admin/queues"><i class="fa fa-align-justify"></i> Növbələr</a></li>
+                            <li><a href="/admin/reservations"><i class="fa fa-table"></i> Rezervlər</a></li>
                         </ul>
                     </div>
 

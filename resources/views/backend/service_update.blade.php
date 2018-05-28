@@ -4,7 +4,7 @@
         <div class="">
             <div class="page-title">
                 <div class="title_left">
-                    <h3>Xidmət mərkəzi əlavə et</h3>
+                    <h3>Xidmət mərkəzi düzənləmək</h3>
                 </div>
             </div>
 
@@ -16,14 +16,14 @@
                         <div class="x_title">
                             <form id="form" data-parsley-validate class="form-horizontal form-label-left" method="post" action="">
                                 {{csrf_field()}}
-                                {{Form::bsTextRequired('name', 'Xidmət mərkəzinin adı')}}
-                                {{Form::bsTextRequired('address', 'Ünvan')}}
-                                {{Form::bsTextRequired('count_limit', 'Saatlıq istifadəçi sayı limiti')}}
+                                {{Form::bsTextRequired('name', 'Xidmət mərkəzinin adı', $service->name)}}
+                                {{Form::bsTextRequired('address', 'Ünvan', $service->address)}}
+                                {{Form::bsTextRequired('count_limit', 'Saatlıq istifadəçi sayı limiti', $service->count_limit)}}
                                 <div class="ln_solid"></div>
                                 <div class="form-group">
                                     <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
                                         <button type="reset" class="btn btn-primary">Təmizlə</button>
-                                        <button type="submit" class="btn btn-success">Əlavə et</button>
+                                        <button type="submit" class="btn btn-success">Düzəliş et</button>
                                     </div>
                                 </div>
                             </form>

@@ -177,6 +177,11 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        ////////////////// new
+        Collective\Html\HtmlServiceProvider::class, //laravel collective
+        App\Providers\FormServiceProvider::class, //for laravel collective
+//        Intervention\Image\ImageServiceProvider::class, //image intervention
+
     ],
 
     /*
@@ -225,6 +230,12 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+
+
+        //new
+        'Form' => Collective\Html\FormFacade::class,  //laravel collective
+        'Html' => Collective\Html\HtmlFacade::class, //laravel collective
+//        'Image' => Intervention\Image\Facades\Image::class, //image intervention
 
     ],
 

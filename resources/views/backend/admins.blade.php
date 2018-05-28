@@ -4,7 +4,8 @@
         <div class="">
             <div class="page-title">
                 <div class="title_left" style="width: 100%; !important;">
-                    <h3 style="display: inline-block;"> Xidmət mərkəzləri</h3>
+                    <h3 style="display: inline-block;"> Adminlər</h3>
+                    {{--adminlerde qalmisam--}}
                     <a href="/admin/services/add" class="btn btn-primary" style="float: right;">Əlavə et</a>
                 </div>
             </div>
@@ -21,8 +22,9 @@
                                     <tr class="headings">
                                         <th class="column-title">#</th>
                                         <th class="column-title">Ad </th>
-                                        <th class="column-title">Ünvan </th>
-                                        <th class="column-title">Saatlıq istifadəçi sayı limiti </th>
+                                        <th class="column-title">Soy ad </th>
+                                        <th class="column-title">İstifadəçi adı </th>
+                                        <th class="column-title">E-mail </th>
                                         <th class="column-title">Qeydiyyat tarixi </th>
                                         <th class="column-title">Dəyişiklik tarixi </th>
                                         <th class="column-title">Silmək </th>
@@ -34,21 +36,21 @@
                                     @php
                                         $row = 1;
                                     @endphp
-                                    @foreach($services as $service)
+                                    @foreach($admins as $admin)
                                         <tr class="even pointer" id="row_{{$row}}">
-                                            <td>{{$service->id}}</td>
-                                            <td>{{$service->name}}</td>
-                                            <td>{{$service->address}}</td>
-                                            <td>{{$service->count_limit}}</td>
-                                            <td>{{$service->created_at}}</td>
-                                            <td>{{$service->updated_at}}</td>
+                                            <td>{{$admin->id}}</td>
+                                            <td>{{$admin->name}}</td>
+                                            <td>{{$admin->address}}</td>
+                                            <td>{{$admin->count_limit}}</td>
+                                            <td>{{$admin->created_at}}</td>
+                                            <td>{{$admin->updated_at}}</td>
                                             <td>
                                                 <input class="btn btn-danger" type="button"
-                                                       onclick="del(this, '{{$service->id}}', '{{$row}}');"
+                                                       onclick="del(this, '{{$admin->id}}', '{{$row}}');"
                                                        value="Sil">
                                             </td>
                                             <td>
-                                                <a href="services/update/{{$service->id}}" class="btn btn-warning">Update</a>
+                                                <a href="services/update/{{$admin->id}}" class="btn btn-warning">Update</a>
                                             </td>
                                         </tr>
                                         @php

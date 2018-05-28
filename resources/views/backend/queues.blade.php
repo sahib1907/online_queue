@@ -4,8 +4,7 @@
         <div class="">
             <div class="page-title">
                 <div class="title_left" style="width: 100%; !important;">
-                    <h3 style="display: inline-block;"> Xidmət mərkəzləri</h3>
-                    <a href="/admin/services/add" class="btn btn-primary" style="float: right;">Əlavə et</a>
+                    <h3 style="display: inline-block;"> Növbələr</h3>
                 </div>
             </div>
 
@@ -20,13 +19,13 @@
                                     <thead>
                                     <tr class="headings">
                                         <th class="column-title">#</th>
-                                        <th class="column-title">Ad </th>
-                                        <th class="column-title">Ünvan </th>
-                                        <th class="column-title">Saatlıq istifadəçi sayı limiti </th>
-                                        <th class="column-title">Qeydiyyat tarixi </th>
-                                        <th class="column-title">Dəyişiklik tarixi </th>
+                                        <th class="column-title">Tarix </th>
+                                        <th class="column-title">Növbə </th>
+                                        <th class="column-title">Təhlükəsizlik kodu </th>
+                                        <th class="column-title">Xidmət mərkəzi </th>
+                                        <th class="column-title">İstifadəçi </th>
+                                        <th class="column-title">Yaradılma tarixi </th>
                                         <th class="column-title">Silmək </th>
-                                        <th class="column-title">Düzəliş etmək </th>
                                     </tr>
                                     </thead>
 
@@ -34,21 +33,19 @@
                                     @php
                                         $row = 1;
                                     @endphp
-                                    @foreach($services as $service)
+                                    @foreach($queues as $queue)
                                         <tr class="even pointer" id="row_{{$row}}">
-                                            <td>{{$service->id}}</td>
-                                            <td>{{$service->name}}</td>
-                                            <td>{{$service->address}}</td>
-                                            <td>{{$service->count_limit}}</td>
-                                            <td>{{$service->created_at}}</td>
-                                            <td>{{$service->updated_at}}</td>
+                                            <td>{{$queue->id}}</td>
+                                            <td>{{$queue->date}}</td>
+                                            <td>{{$queue->queue}}</td>
+                                            <td>{{$queue->code}}</td>
+                                            <td>{{$queue->service}}</td>
+                                            <td>{{$queue->name}} {{$queue->surname}}</td>
+                                            <td>{{$queue->created_at}}</td>
                                             <td>
                                                 <input class="btn btn-danger" type="button"
-                                                       onclick="del(this, '{{$service->id}}', '{{$row}}');"
+                                                       onclick="del(this, '{{$queue->id}}', '{{$row}}');"
                                                        value="Sil">
-                                            </td>
-                                            <td>
-                                                <a href="services/update/{{$service->id}}" class="btn btn-warning">Update</a>
                                             </td>
                                         </tr>
                                         @php
